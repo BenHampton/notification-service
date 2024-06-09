@@ -1,2 +1,27 @@
 server:
   port: 8080
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+  jobsite-exchange: ${JOBSITE_EXCHANGE:jobsite.fanout}
+  jobsite-routing-key: ${JOBSITE_ROUTING_KEY:}
+  test-routing-key: test-queue
+  test-exchange: test
+  send:
+    retry:
+      max-attempts: 3
+      initial-interval: 3000
+      max-interval: 10000
+      multiplier: 2
+  thread:
+    core-pool-size: 5
+    max-pool-size: 10
+    queue-capacity: -1
+
+
+logging:
+  level:
+    org.springframework.amqp.rabbit: DEBUG
