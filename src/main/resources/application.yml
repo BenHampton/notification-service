@@ -6,10 +6,10 @@ rabbitmq:
   port: 5672
   username: guest
   password: guest
-  jobsite-exchange: ${JOBSITE_EXCHANGE:jobsite.fanout}
-  jobsite-routing-key: ${JOBSITE_ROUTING_KEY:}
-  test-routing-key: test-queue
-  test-exchange: test
+  test-exchange: ${TEST_EXCHANGE:test.fanout}
+  test-routing-key: ${TEST_ROUTING_KEY:}
+  test-queue-routing-key: test-queue
+  test-queue-exchange: test
   send:
     retry:
       max-attempts: 3

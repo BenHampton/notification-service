@@ -30,8 +30,8 @@ public class PublisherService {
         try {
 
             rabbitTemplate.convertAndSend(
-                    rabbitConfigProperties.getTestExchange(),
-                    rabbitConfigProperties.getTestRoutingKey(),
+                    rabbitConfigProperties.getTestQueueExchange(),
+                    rabbitConfigProperties.getTestQueueRoutingKey(),
                     test);
             log.info("Sending message: " + test);
 

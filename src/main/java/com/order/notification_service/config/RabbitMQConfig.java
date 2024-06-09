@@ -49,7 +49,7 @@ public class RabbitMQConfig {
     public FanoutExchange jobsiteExchange() {
         // Will create exchange if it doesn't exist
         return ExchangeBuilder
-                .fanoutExchange(rabbitConfigProperties.getJobsiteExchange())
+                .fanoutExchange(rabbitConfigProperties.getTestExchange())
                 .durable(true)
                 .build();
     }
@@ -57,7 +57,7 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue testQueue() {
-        return QueueBuilder.durable(rabbitConfigProperties.getTestRoutingKey()).build();
+        return QueueBuilder.durable(rabbitConfigProperties.getTestQueueRoutingKey()).build();
     }
 
     @Bean
@@ -65,13 +65,13 @@ public class RabbitMQConfig {
         return BindingBuilder
                 .bind(testQueue())
                 .to(testTopicExchange())
-                .with(rabbitConfigProperties.getTestRoutingKey());
+                .with(rabbitConfigProperties.getTestQueueRoutingKey());
     }
 
     @Bean
     public TopicExchange testTopicExchange() {
         return ExchangeBuilder
-                .topicExchange(rabbitConfigProperties.getTestExchange())
+                .topicExchange(rabbitConfigProperties.getTestQueueExchange())
                 .durable(true)
                 .build();
     }

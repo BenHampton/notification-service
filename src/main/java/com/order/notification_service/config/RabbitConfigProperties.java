@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class RabbitConfigProperties {
 
-    private String jobsiteExchange;
-
-    private String jobsiteRoutingKey;
+    private String testExchange;
 
     private String testRoutingKey;
 
-    private String testExchange;
+    private String testQueueRoutingKey;
+
+    private String testQueueExchange;
 }
